@@ -1,7 +1,12 @@
-const message = "vvh financial";
+function copyright() {
+    let date = new Date().getFullYear();
 
-function a(data) {
-    console.log(data);
+    const copyrightEl = document.getElementById('copyright');
+    if (date >= 2022) {
+        copyrightEl.innerText = `\u00A9 ${date}`;
+    } else {
+        copyrightEl.innerText = `\u00A9 2022 - ${date}`;
+    }
 };
 
-a(message);
+copyright();
