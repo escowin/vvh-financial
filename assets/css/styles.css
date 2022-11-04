@@ -70,7 +70,7 @@ nav {
     justify-content: space-between;
 }
 
-section {
+.section {
     margin: .5rem 0 1.5rem 0;
 }
 
@@ -81,7 +81,6 @@ section {
     padding: 1rem;
     border-radius: 1rem;
     border: 1px solid var(--text);
-    /* box-shadow: inset 0 0 1rem var(--text); */
     gap: 1rem .5rem;
     align-items: center;
 }
@@ -152,4 +151,17 @@ a:hover {
 
 p {
     padding-left: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+    #profile {
+        --size: 20vw;
+        width: var(--size);
+    }
+
+    #services {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
 }
