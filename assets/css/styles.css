@@ -100,8 +100,8 @@ input {
     box-shadow: 0 0 .5rem var(--cta);
 }
 
-#first-name,
-#last-name,
+#phone-number,
+#email,
 #submit {
     grid-column: span 2;
 }
@@ -109,7 +109,7 @@ input {
 
 #cta-form input {
     --accent: rgba(247, 226, 226, 0.111);
-    border-radius: .5rem;
+    border-radius: 0 .5rem;
     margin-top: .15rem;
     padding: .5rem .25rem;
     background: transparent;
