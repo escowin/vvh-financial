@@ -11,40 +11,56 @@
 <body>
     <header>
         <h1 class="header">
-            <img src="./assets/images/header.png" alt="vvh financial"></span>
+            <a href="./">
+                <img src="./assets/images/header.png" alt="vvh financial">
+            </a>
         </h1>
         <nav>
             <ul id="menu">
-                <li href="#one">Contact</li>
-                <li href="#two">Estate</li>
-                <li href="#three">Finances</li>
-                <li href="#four">About</li>
+                <li><a  href="#contact">Contact</a></li>
+                <li><a  href="#finances">Finances</a></li>
+                <li><a  href="#estate">Estate</a></li>
+                <li><a  href="#about">About</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <!-- cta -->
-        <section class="section" id="one">
-            <form id="cta">
-                <h2>Secure your future</h2>
-                <label>Name</label>
-                <input placeholder="Name">
-                <label>Phone</label>
-                <input placeholder="name">                <label>Email</label>
-                <input placeholder="name">
-                <button id="submit-btn">Submit</button>
+        <section class="section" id="cta">
+            <h2 class="header">Secure your future</h2>
+            <form id="cta-form">
+                <div id="first-name">
+                    <label>First name</label>
+                    <input id="first-name-input">
+                </div>
+
+                <div id="last-name">
+                    <label>Last name</label>
+                    <input id="last-name-input">
+                </div>
+                <div id="phone-number">
+                    <label>Phone number</label>
+                    <input id="phone-number-input">
+                </div>
+
+                <div id="phone-number">
+                    <label>Email</label>
+                    <input id="phone-number-input">
+                </div>
+
+                <button id="submit">Submit</button>
             </form>
         </section>
 
         <!-- services block -->
         <section id="services">
             <article class="section" id="three">
-                <h2 class="header">Finances</h2>
+                <h2 class="header">Financial planning</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, ipsum soluta. Quae, vel! Itaque qui debitis ipsum rerum quaerat tenetur.</p>
             </article>
 
             <article class="section" id="two">
-                <h2 class="header">Estate</h2>
+                <h2 class="header">Estate settelment</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             </article>
         </section>

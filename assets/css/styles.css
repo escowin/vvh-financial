@@ -8,10 +8,12 @@
 }
 
 :root {
-    --text: rgb(220, 205, 205);
+    --text: rgb(252, 247, 231);
     --hover: rgb(101, 155, 189);
     --dark-overlay: rgba(0, 0, 0, .90);
-    --light-overlay: rgba(255, 255, 255, .25);
+    --light-overlay: rgba(252, 247, 226, 0.606);
+    --button: rgba(0, 0, 0, 0.247);
+    --cta: rgba(0, 0, 0, 0.064);
     --background: rgb(35, 23, 125);
 }
 
@@ -71,39 +73,69 @@ nav {
 }
 
 .section {
-    margin: .5rem 0 1.5rem 0;
+    margin: 1.5rem 0;
 }
 
-#cta {
-    margin: 2rem 1rem;
+/* CTA */
+#cta .header {
+    text-align: center;
+}
+
+input {
+    padding-left: 1rem;
+}
+
+#cta-form {
+    margin: .5rem 0 1rem 0;
     display: grid;
-    grid-template-columns: auto 2fr;
+    grid-template-columns: 1fr 1fr;
     padding: 1rem;
     border-radius: 1rem;
-    border: 1px solid var(--text);
+    /* border: 1px solid var(--text); */
     gap: 1rem .5rem;
     align-items: center;
+    background-color: var(--cta);
+    box-shadow: 0 0 .5rem var(--cta);
 }
 
-#cta h2 {
+#first-name, #last-name, #submit {
     grid-column: span 2;
-    border-bottom: 1px solid var(--text);
-    font-variant: small-caps;
 }
 
-#cta input {
+
+#cta-form input {
+    --accent: rgba(247, 226, 226, 0.111);
     border-radius: .5rem;
+    margin-top: .15rem;
     padding: .5rem .25rem;
-    background-color: var(--light-overlay);
+    background: transparent;
+    border-color: transparent transparent var(--accent) transparent;
+    width: 100%;
+    color: var(--light-overlay);
+    box-shadow: transparent;
+    transition: 1s;
 }
 
-#submit-btn {
-    grid-column: span 2;
-    border-radius: 1rem;
+#cta-form input:focus {
+    outline: none;
+    background-color: var(--cta);
+    box-shadow: 0 0 1rem var(--cta);
+    color: var(--text);
+}
+
+#submit {
+    color: var(--light-overlay);
+    border-radius: .5rem;
     padding: .25rem;
-    background-color: var(--light-overlay);
+    background-color: var(--button);
     /* box-shadow: 0 0 1rem var(--light-overlay); */
     border: none;
+}
+
+/* SERVICES */
+#services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 #about {
@@ -128,11 +160,20 @@ nav {
 }
 
 /* typography */
-.header,
-#menu * {
+body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: 100;
+}
+
+.header,
+#menu *,
+label,
+button {
     font-variant: small-caps;
+    font-weight: 100;
+}
+
+label {
+    color: var(--light-overlay);
 }
 
 body * {
@@ -151,9 +192,26 @@ a:hover {
 
 p {
     padding-left: 1rem;
+    text-indent: 1rem;
 }
 
 @media screen and (min-width: 768px) {
+    #menu {
+        font-size: 1.5rem;
+    }
+
+    .header {
+        font-size: 1.75rem;
+    }
+
+    p {
+        font-size: 1.25rem;
+    }
+
+    header img {
+        max-height: 10vw;
+    }
+
     #profile {
         --size: 20vw;
         width: var(--size);
@@ -164,4 +222,34 @@ p {
         grid-template-columns: 1fr 1fr;
     }
 
+    #submit-btn {
+        width: 80%;
+        margin: 0 auto
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+    header {
+        flex-direction: row;
+        align-items: baseline;
+    }
+
+    header img {
+        --size: 5vw;
+        max-height: var(--size);
+        padding: 0 1rem;
+    }
+
+    #menu {
+        font-size: 2rem;
+    }
+
+    #about {
+        align-items: center;
+    }
+
+    #about h2 {
+        display: none;
+    }
 }
