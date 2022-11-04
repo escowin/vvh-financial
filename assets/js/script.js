@@ -25,12 +25,15 @@ function formSubmit(e) {
   const phoneNumberInput = document.getElementById("phone-number-input");
   const emailInput = document.getElementById("email-input");
 
-  prospect = {
+  const prospect = {
     firstName: firstNameInput.value,
     lastName: lastNameInput.value,
     phoneNumber: phoneNumberInput.value,
     email: emailInput.value,
   };
+
+  prospects.push(prospect);
+  console.log(prospects);
 };
 
 // calls
