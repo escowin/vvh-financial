@@ -4,7 +4,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /* border: 1px dotted aqua; */
+    font-variant: small-caps;
+    font-weight: 100;
 }
 
 :root {
@@ -14,7 +15,7 @@
     --light-overlay: rgba(252, 247, 226, 0.606);
     --button: rgba(0, 0, 0, 0.247);
     --cta: rgba(0, 0, 0, 0.064);
-    --background: rgba(13, 9, 45, 0.879);
+    --background: rgba(40, 36, 67, 0.85);
 }
 
 body {
@@ -26,6 +27,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
 }
 
 /* flow */
@@ -47,6 +49,7 @@ header {
 }
 
 header img {
+    /* background: aqua; */
     color: var(--text);
     max-height: 15vw;
 }
@@ -75,7 +78,7 @@ nav {
 }
 
 .section {
-    margin: 1.5rem 0;
+    margin: 1.5rem 0 0 0;
 }
 
 /* CTA */
@@ -93,7 +96,6 @@ input {
     grid-template-columns: 1fr 1fr;
     padding: 1rem;
     border-radius: 1rem;
-    /* border: 1px solid var(--text); */
     gap: 1rem .5rem;
     align-items: center;
     background-color: var(--cta);
@@ -132,8 +134,13 @@ input {
     border-radius: .5rem;
     padding: .25rem;
     background-color: var(--button);
-    /* box-shadow: 0 0 1rem var(--light-overlay); */
     border: none;
+    cursor: pointer;
+    transition: 1s;
+}
+
+#submit:hover {
+    background-color: var(--light-overlay);
 }
 
 /* main#services */
@@ -141,19 +148,21 @@ input {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-/* main#about */
-#about {
+
+/* main#agents */
+#agents {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: .5rem;
 }
 
-#about h2 {
-    grid-column: span 2;
+.agent {
+    width: fit-content;
+    border-bottom: 1px solid var(--light-overlay);
 }
 
 #profile {
     --size: 25vw;
+    --box-shadow: 0 0 1rem var(--background);
     width: var(--size);
     height: var(--size);
     background: url('../images/profile.jpg');
@@ -162,20 +171,12 @@ input {
     background-size: contain;
     background-repeat: no-repeat;
     margin: 0 1rem;
-    box-shadow: 0 0 1rem .1rem var(--background);
+    box-shadow: inset var(--box-shadow), var(--box-shadow);
 }
 
 /* typography */
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.header,
-#menu *,
-label,
-button {
-    font-variant: small-caps;
-    font-weight: 100;
 }
 
 label {
@@ -196,6 +197,10 @@ a:hover {
     color: var(--hover);
 }
 
+.position {
+    color: var(--text);
+}
+
 p {
     padding-left: 1rem;
 }
@@ -205,9 +210,12 @@ p {
         display: none;
     }
 
-    header {
-        flex-direction: row;
-        align-items: baseline;
+    footer {
+        background-color: transparent;
+    }
+
+    footer * {
+        font-size: 1rem;
     }
 
     header img {
@@ -225,6 +233,11 @@ p {
         font-size: 1.75rem;
     }
 
+    #cta .header {
+        text-align: start;
+        padding-left: 1rem;
+    }
+
     p {
         font-size: 1.25rem;
     }
@@ -234,52 +247,58 @@ p {
     }
 
     #profile {
-        --size: 20vw;
+        --size: 15vw;
         width: var(--size);
     }
 
-    #services {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+    #submit {
+        font-size: 1.125rem;
+        width: 50%;
+        margin: 0 auto;
     }
-
-    #submit-btn {
-        width: 80%;
-        margin: 0 auto
-    }
-
 }
 
 @media screen and (min-width: 1024px) {
+    body {
+        display: grid;
+        grid-template-areas:
+            "a b"
+            "c b";
+    }
+
+    header,
+    footer {
+        width: 15vw;
+    }
+
+    header {
+        grid-area: a;
+        height: 100%;
+        padding: 0 .25rem auto .25rem;
+    }
+
     header img {
-        --size: 6vw;
-        max-height: var(--size);
-        padding: 0 1rem;
+        width: 100%;
     }
 
     main {
-        display: grid;
-        grid-template-areas:
-            "b c"
-            "b c"
-            "a a";
-        column-gap: 1rem;
-        align-items: center;
-    }
-
-    #about {
-        grid-area: a;
-    }
-
-    #services {
         grid-area: b;
         display: flex;
         flex-direction: column;
-        /* margin: auto 0; */
     }
 
-    #cta {
+    footer {
+        display: flex;
+        align-items: flex-end;
         grid-area: c;
+        height: 100%;
+        padding: 0 .25rem;
+        background-color: var(--dark-overlay);
+        box-shadow: 0 0 2rem var(--dark-overlay);
+    }
+
+    footer a {
+        font-size: .75rem;
     }
 
     #menu {
@@ -287,7 +306,7 @@ p {
     }
 
     #profile {
-        --size: 12.5vw;
+        --size: 10vw;
         width: var(--size);
     }
 
@@ -295,9 +314,6 @@ p {
         margin-top: 1rem;
     }
 
-    footer .header {
-        font-size: 1.125rem;
-    }
     p {
         padding-left: 0;
     }
