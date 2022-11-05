@@ -27,7 +27,10 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
 
+.mobile-hide {
+    display: none;
 }
 
 /* flow */
@@ -49,7 +52,6 @@ header {
 }
 
 header img {
-    /* background: aqua; */
     color: var(--text);
     max-height: 15vw;
 }
@@ -71,10 +73,26 @@ nav {
     width: 100%;
 }
 
-#menu {
+ul {
     list-style: none;
+}
+
+#header-menu {
     display: flex;
     justify-content: space-between;
+}
+
+#footer-menu {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 .25rem;
+}
+
+#copyright {
+    grid-column: span 3;
+    text-align: center;
 }
 
 .section {
@@ -107,7 +125,6 @@ input {
 #submit {
     grid-column: span 2;
 }
-
 
 #cta-form input {
     --accent: rgba(247, 226, 226, 0.111);
@@ -158,6 +175,7 @@ input {
 .agent {
     width: fit-content;
     border-bottom: 1px solid var(--light-overlay);
+    color: var(--light-overlay);
 }
 
 #profile {
@@ -202,20 +220,26 @@ a:hover {
 }
 
 p {
-    padding-left: 1rem;
+    padding-left: .5rem;
 }
 
 @media screen and (min-width: 768px) {
+    .mobile-hide {
+        display: block;
+    }
     #about h2 {
         display: none;
     }
 
-    footer {
-        background-color: transparent;
-    }
-
     footer * {
         font-size: 1rem;
+    }
+
+    #footer-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0;
     }
 
     header img {
@@ -224,7 +248,7 @@ p {
         padding: 0 1rem;
     }
 
-    #menu {
+    #header-menu {
         justify-content: space-around;
         font-size: 1.5rem;
     }
@@ -288,8 +312,8 @@ p {
     }
 
     footer {
-        display: flex;
-        align-items: flex-end;
+        justify-content: end;
+        flex-direction: column;
         grid-area: c;
         height: 100%;
         padding: 0 .25rem;
@@ -297,24 +321,36 @@ p {
         box-shadow: 0 0 2rem var(--dark-overlay);
     }
 
-    footer a {
+    footer * {
         font-size: .75rem;
+        text-align: left;
     }
 
-    #menu {
-        font-size: 1.75rem;
+    #footer-menu {
+        flex-direction: column;
+        line-height: 1rem;
+    }
+
+    #footer-menu li {
+        width: 100%;
+    }
+
+    #copyright {
+        text-align: inherit;
+    }
+
+    .pl {
+        padding-left: .5rem;
+    }
+
+    #header-menu {
+        font-size: 1.25rem;
+        flex-direction: column;
+        padding-left: 1rem;
     }
 
     #profile {
         --size: 10vw;
         width: var(--size);
-    }
-
-    #about-text {
-        margin-top: 1rem;
-    }
-
-    p {
-        padding-left: 0;
     }
 }

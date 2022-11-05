@@ -6,12 +6,12 @@ let prospects = [];
 function copyright() {
   let date = new Date().getFullYear();
   console.log(`
-    \u00A9 ${date} Edwin M. Escobar
+    Site by Edwin M. Escobar
     https://github.com/escowin
     `);
 
-  const copyrightEl = document.getElementById("copyright");
-  copyrightEl.innerText = `\u00A9${date}`;
+  const dateEl = document.getElementById("date");
+  dateEl.innerText = `\u00A9 ${date}`;
 };
 
 function formSubmit(e) {
