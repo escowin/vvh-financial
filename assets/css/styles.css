@@ -51,7 +51,7 @@ header {
     box-shadow: 0 0 2rem var(--dark-overlay);
 }
 
-header img {
+#logo {
     max-height: 15vw;
 }
 
@@ -248,7 +248,7 @@ p {
         padding: 0;
     }
 
-    header img {
+    #logo {
         --size: 5vw;
         max-height: var(--size);
         padding: .25rem .25rem 0 .25rem;
@@ -271,7 +271,7 @@ p {
         font-size: 1.25rem;
     }
 
-    header img {
+    #logo {
         max-height: 10vw;
     }
 
@@ -307,7 +307,7 @@ p {
         padding: 0 .25rem auto .25rem;
     }
 
-    header img {
+    #logo {
         width: 100%;
     }
 

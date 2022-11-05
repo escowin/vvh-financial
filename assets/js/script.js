@@ -1,5 +1,8 @@
+// dom elements
+const logoEl = document.getElementById("logo");
 const ctaForm = document.getElementById("cta-form");
 
+// data
 let prospects = [];
 
 // logic
