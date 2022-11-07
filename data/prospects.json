@@ -34,6 +34,13 @@
       "lastName": "McDermott",
       "phoneNumber": "212.555.6342",
       "email": "craig@pierceandpierce.com"
+    },
+    {
+      "firstName": "Evelyn",
+      "lastName": "Williams",
+      "phoneNumber": "212.555.6342",
+      "email": "evelyn@aclu.org",
+      "id": "5"
     }
   ]
 }

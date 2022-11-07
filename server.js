@@ -1,9 +1,14 @@
+const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const { prospects } = require('./data/prospects.json')
 
 // port set up & app instantiation
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+// express middleware
+app.use(express.json());
 
 // search logic. filter search & searching by id
 function filterByQuery(query, prospectsArray) {
@@ -28,8 +33,33 @@ function findById(id, prospectsArray) {
     return result;
 };
 
-// routes
-// - api routes
+function createNewProspect(body, prospectsArray) {
+    const prospect = body;
+    prospectsArray.push(prospect);
+    fs.writeFileSync(
+        path.join(__dirname, './data/prospects.json'),
+        JSON.stringify({ prospects: prospectsArray }, null, 2)
+    );
+};
+
+function validateProspect(prospect) {
+    if (!prospect.firstName || typeof prospect.firstName !== 'string') {
+        return false;
+    }
+    if (!prospect.lastName || typeof prospect.lastName !== 'string') {
+        return false;
+    }
+    if (!prospect.phoneNumber || typeof prospect.phoneNumber !== 'string') {
+        return false;
+    }
+    if (!prospect.email || typeof prospect.email !== 'string') {
+        return false;
+    }
+    return true;
+};
+
+// api routes
+// GET a list of prospects w/ filter options
 app.get('/api/prospects', (req, res) => {
     let results = prospects;
     if (req.query) {
@@ -38,6 +68,7 @@ app.get('/api/prospects', (req, res) => {
     res.json(results);
 });
 
+// GET a specific prospect based on unique id
 app.get('/api/prospects/:id', (req, res) => {
     const result = findById(req.params.id, prospects);
     if (result) {
@@ -47,7 +78,21 @@ app.get('/api/prospects/:id', (req, res) => {
     }
 });
 
+// POST a prospect w/ a unique id to prospects.json
+app.post('/api/prospects', (req, res) => {
+    req.body.id = prospects.length.toString();
+    console.log(req.body);
+
+    // incorrectly formatted data will send back 400
+    if (!validateProspect(req.body)) {
+        res.status(400).send("prospect not properly formatted");
+    } else {
+        const prospect = createNewProspect(req.body, prospects)
+        res.json(prospect)
+    }
+});
+
 // listens for requests
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}`);
-})
+});
