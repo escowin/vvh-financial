@@ -8,7 +8,10 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 // express middleware
+// - takes incoming json formatted POST data, parses it into req.body javascript object
 app.use(express.json());
+// - allows frontend html to run its scripts
+app.use(express.static('public'));
 
 // search logic. filter search & searching by id
 function filterByQuery(query, prospectsArray) {
@@ -76,6 +79,14 @@ app.get('/api/prospects/:id', (req, res) => {
     } else {
         res.send(404);
     }
+});
+
+// html routes to display frontend html in browser
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/index.html'));
+});
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 // POST a prospect w/ a unique id to prospects.json

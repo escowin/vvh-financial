@@ -1,12 +1,12 @@
 // dom elements
 const logoEl = document.getElementById("logo");
-const ctaForm = document.getElementById("cta-form");
+const appointmentForm = document.getElementById("cta-form");
 
 // data
-let prospects = [];
+// let prospects = [];
 
 // logic
-function copyright() {
+const copyright = () => {
   let date = new Date().getFullYear();
   console.log(`
     Site by Edwin M. Escobar
@@ -15,26 +15,45 @@ function copyright() {
 
   const dateEl = document.getElementById("date");
   dateEl.innerText = `\u00A9 ${date}`;
-};
+}
 
-function formSubmit(e) {
+const formSubmit = (e) => {
   e.preventDefault();
-  const firstNameInput = document.getElementById("first-name-input");
-  const lastNameInput = document.getElementById("last-name-input");
-  const phoneNumberInput = document.getElementById("phone-number-input");
-  const emailInput = document.getElementById("email-input");
+  const firstName = document.getElementById("first-name-input").value.trim();
+  const lastName = document.getElementById("last-name-input").value.trim();
+  const phoneNumber = document.getElementById("phone-number-input").value.trim();
+  const email = document.getElementById("email-input").value.trim();
 
   const prospect = {
-    firstName: firstNameInput.value,
-    lastName: lastNameInput.value,
-    phoneNumber: phoneNumberInput.value,
-    email: emailInput.value,
+    firstName,
+    lastName,
+    phoneNumber,
+    email
   };
 
-  prospects.push(prospect);
-  console.log(prospects);
+  // prospects.push(prospect);
+  // console.log(prospects);
+
+  fetch('/api/prospects', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(prospect)
+  })
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    alert(`error: ${response.statusText()}`);
+  })
+  .then(postResponse => {
+    console.log("prospect added to prospects.json");
+    console.log(postResponse);
+  });
 };
 
 // calls
-ctaForm.addEventListener("submit", formSubmit);
+appointmentForm.addEventListener("submit", formSubmit);
 copyright();
