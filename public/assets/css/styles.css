@@ -71,7 +71,8 @@ footer {
 main {
     display: flex;
     flex-direction: column;
-    padding: 0 5vw;
+    padding: 0 5vw 2rem 0;
+    margin-bottom: auto;
 }
 
 nav {
