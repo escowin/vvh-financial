@@ -1,0 +1,40 @@
+#requests {
+    display: flex;
+    flex-direction: column;
+}
+
+.request {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2rem auto;
+    text-align: start;
+    margin: .25rem 0;
+}
+
+.id {
+    grid-row: span 3;
+}
+
+.phone-number, .email {
+    padding-left: 1rem;
+}
+
+/*  */
+@media screen and (min-width: 768px) {
+    main {
+        padding: 0 2.5vw;
+    }
+
+    #requests {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .header {
+        grid-column: span 2;
+    }
+
+    .email, .phone-number {
+        font-size: 1rem;
+    }
+}

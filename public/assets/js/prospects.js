@@ -9,12 +9,14 @@ const displayProspects = prospectsArray => {
         let email = prospectsArray[i].email;
 
         const requestEl = document.createElement('article');
-        requestEl.setAttribute = 'request';
+        requestEl.className = 'request';
         requestEl.innerHTML = `<p class='id'>${id}</p>
-        <p class='first-name'>${firstName}</p>
-        <p class='last-name'>${lastName}</p>
-        <p class='phone-number'>${phoneNumber}</p>
-        <p class='email'>${email}</p>`;
+        <p class='name'>
+            <span class='first-name'>${firstName}</span>
+            <span class='last-name'>${lastName}</span>
+        </p>
+        <p class='email'>${email}</p>
+        <p class='phone-number'>${phoneNumber}</p>`;
 
         requestsEl.appendChild(requestEl);
     }
@@ -23,9 +25,9 @@ const displayProspects = prospectsArray => {
 const getProspects = (formData = {}) => {
     let queryUrl = '/api/prospects?';
 
-    // Object.entries(formData).forEach(([key, value]) => {
-    //     queryUrl += `${key}=${value}&`;
-    // });
+    Object.entries(formData).forEach(([key, value]) => {
+        queryUrl += `${key}=${value}&`;
+    });
     // console.log(queryUrl)
 
     fetch(queryUrl)

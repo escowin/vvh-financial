@@ -300,6 +300,7 @@ p {
         grid-template-areas:
             "a b"
             "c b";
+        grid-template-columns: auto 1fr;
     }
 
     header,
