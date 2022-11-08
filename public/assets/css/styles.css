@@ -16,6 +16,7 @@
     --button: rgba(0, 0, 0, 0.247);
     --cta: rgba(0, 0, 0, 0.064);
     --background: rgba(40, 36, 67, 0.85);
+    --dev: rgb(151, 18, 18);
 }
 
 body {
@@ -27,6 +28,10 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+.dev {
+    color: var(--dev);
 }
 
 .mobile-hide {
