@@ -1,109 +1,47 @@
-const fs = require('fs');
 const path = require('path');
+const routes = require('./controllers');
 const express = require('express');
-const { prospects } = require('./data/prospects.json')
+const session = require('express-session');
+const exphbs = require('express-handlebars');
+const helpers = require('./utils/helpers');
 
-// port set up & app instantiation
-const PORT = process.env.PORT || 3001;
+// server | runs the server & listens through the port
 const app = express();
+const PORT = process.env.PORT || 3001;
 
-// express middleware
-// - takes incoming json formatted POST data, parses it into req.body javascript object
+// orm | connects to & auto stores sessions in db
+const sequelize = require('./config/connection');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+// session | property object | information associated with user 
+const sess = {
+    secret: 'the secret',
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({ db: sequelize })
+};
+
+// middleware | session | session uses sess object
+app.use(session(sess));
+
+// server template engine | handlebars with custom formatting helpers
+const hbs = exphbs.create({ helpers });
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+
+// middleware | express | faciliates front & backend data communication; setting the public folder contents to static allows views to load frontend javascript & css.
 app.use(express.json());
-// - allows frontend html to run its scripts
-app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// search logic. filter search & searching by id
-function filterByQuery(query, prospectsArray) {
-    let filteredResults = prospectsArray;
-    if (query.firstName) {
-        filteredResults = filteredResults.filter(prospect => prospect.firstName === query.firstName);
-    }
-    if (query.lastName) {
-        filteredResults = filteredResults.filter(prospect => prospect.lastName === query.lastName);
-    }
-    if (query.phoneNumber) {
-        filteredResults = filteredResults.filter(prospect => prospect.phoneNumber === query.phoneNumber);
-    }
-    if (query.email) {
-        filteredResults = filteredResults.filter(prospect => prospect.email === query.email);
-    }
-    return filteredResults;
-};
+// turn on routes
+app.use(routes);
 
-function findById(id, prospectsArray) {
-    const result = prospectsArray.filter(prospect => prospect.id === id)[0];
-    return result;
-};
-
-function createNewProspect(body, prospectsArray) {
-    const prospect = body;
-    prospectsArray.push(prospect);
-    fs.writeFileSync(
-        path.join(__dirname, './data/prospects.json'),
-        JSON.stringify({ prospects: prospectsArray }, null, 2)
-    );
-};
-
-function validateProspect(prospect) {
-    if (!prospect.firstName || typeof prospect.firstName !== 'string') {
-        return false;
-    }
-    if (!prospect.lastName || typeof prospect.lastName !== 'string') {
-        return false;
-    }
-    if (!prospect.phoneNumber || typeof prospect.phoneNumber !== 'string') {
-        return false;
-    }
-    if (!prospect.email || typeof prospect.email !== 'string') {
-        return false;
-    }
-    return true;
-};
-
-// api routes
-// GET a list of prospects w/ filter options
-app.get('/api/prospects', (req, res) => {
-    let results = prospects;
-    if (req.query) {
-        results = filterByQuery(req.query, results);
-    }
-    res.json(results);
-});
-
-// GET a specific prospect based on unique id
-app.get('/api/prospects/:id', (req, res) => {
-    const result = findById(req.params.id, prospects);
-    if (result) {
-        res.json(result)
-    } else {
-        res.send(404);
-    }
-});
-
-// html routes to display frontend html in browser
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.html'));
-});
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/index.html'));
-});
-
-// POST a prospect w/ a unique id to prospects.json
-app.post('/api/prospects', (req, res) => {
-    req.body.id = prospects.length.toString();
-    console.log(req.body);
-
-    // incorrectly formatted data will send back 400
-    if (!validateProspect(req.body)) {
-        res.status(400).send("prospect not properly formatted");
-    } else {
-        const prospect = createNewProspect(req.body, prospects)
-        res.json(prospect)
-    }
-});
-
-// listens for requests
-app.listen(PORT, () => {
-    console.log(`API server now on port ${PORT}`);
+// turn on database and server connection
+// - force: true | DROP DATABASE IF EXISTS tech_blog_db;
+sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log('Now listening'));
 });
