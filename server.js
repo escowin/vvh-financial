@@ -31,7 +31,6 @@ const hbs = exphbs.create({ helpers });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-
 // middleware | express | faciliates front & backend data communication; setting the public folder contents to static allows views to load frontend javascript & css.
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
