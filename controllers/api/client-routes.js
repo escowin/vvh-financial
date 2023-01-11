@@ -6,12 +6,12 @@ const withAuth = require("../../utils/auth");
 // - create
 router.post("/", (req, res) => {
   Client.create({
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
+    first_name: req.body.firstName,
+    last_name: req.body.lastName,
     email: req.body.email,
     phone: req.body.phone,
-    contact_method: req.body.contact_method,
-    client_text: req.body.client_text,
+    contact_method: req.body.contact,
+    client_text: req.body.clientText,
   })
     .then((dbClientData) => res.json(dbClientData))
     .catch((err) => {
