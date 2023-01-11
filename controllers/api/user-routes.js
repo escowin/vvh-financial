@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Client, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // get | users | /api/users
@@ -23,20 +23,16 @@ router.get("/:id", (req, res) => {
   User.findOne({
     attributes: { exclude: ["password"] },
     where: { id: req.params.id },
-    // include: [
-    //   {
-    //     model: Post,
-    //     attributes: ["id", "title", "content", "created_at"],
-    //   },
-    //   {
-    //     model: Comment,
-    //     attributes: ["id", "comment_text", "created_at"],
-    //     include: {
-    //       model: Post,
-    //       attributes: ["title"],
-    //     },
-    //   },
-    // ],
+    include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "created_at"],
+        include: {
+          model: Client,
+          attributes: ["first_name", "last_name", "phone", "email", "client_text"],
+        },
+      },
+    ],
   })
     .then((dbUserData) => {
       if (!dbUserData) {
@@ -120,14 +116,14 @@ router.post("/login", (req, res) => {
     },
   }).then((dbUserData) => {
     if (!dbUserData) {
-      res.status(400).json({ message: "user not found with this email" });
+      res.status(400).json({ message: "user not found" });
       return;
     }
 
     // verifies dbUserData's password by comparing the plain text with the object's stored hashed password.
     const validPassword = dbUserData.checkPassword(req.body.password);
     if (!validPassword) {
-      res.status(400).json({ message: "incorrect password" });
+      res.status(400).json({ message: "user not found" });
       return;
     }
 
