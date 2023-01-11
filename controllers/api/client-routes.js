@@ -27,7 +27,13 @@ router.get("/", (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "client_id", "user_id", "created_at"],
+        attributes: [
+          "id",
+          "comment_text",
+          "client_id",
+          "user_id",
+          "created_at",
+        ],
         include: {
           model: User,
           attributes: ["username"],
@@ -86,9 +92,49 @@ router.get("/:id", withAuth, (req, res) => {
 });
 
 // - update
-// router.put("/:id", withAuth, (req, res) => {});
+router.put("/:id", withAuth, (req, res) => {
+  Client.update(
+    {
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      phone: req.body.phone,
+      contact_method: req.body.contact_method,
+      // client_text: req.body.client_text,
+    },
+    {
+      where: { id: req.params.id },
+    }
+  )
+    .then((dbClientData) => {
+      if (!dbClientData) {
+        req.status(404).json({ message: "client does not exist" });
+        return;
+      }
+      res.json(dbClientData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 // - delete
-// router.delete("/:id", withAuth, (req, res) => {});
+router.delete("/:id", withAuth, (req, res) => {
+  Client.destroy({
+    where: { id: req.params.id },
+  })
+    .then((dbClientData) => {
+      if (!dbClientData) {
+        res.status(404).json({ message: "client does not exist" });
+        return;
+      }
+      res.json(dbClientData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;
