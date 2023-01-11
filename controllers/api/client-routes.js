@@ -1,6 +1,5 @@
 const router = require("express").Router();
-const { Post } = require("../../../cms-blog/models");
-const { Client, User } = require("../../models");
+const { Client, User, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // restful api | routes | /api/users, /api/users/:id
@@ -24,7 +23,17 @@ router.post("/", (req, res) => {
 // - read
 router.get("/", (req, res) => {
   Client.findAll({
-    attributes: { exclude: ["updated_at"] },
+    // order: [["created_at", "DESC"]],
+    include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "client_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+    ],
   })
     .then((dbClientData) => res.json(dbClientData))
     .catch((err) => {

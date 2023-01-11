@@ -5,7 +5,7 @@ const withAuth = require('../../utils/auth');
 // authguarded | crud operations accessible only to logged in user
 // restful api | comments | /api/comments/
 // - read
-router.get("/", withAuth, (req, res) => {
+router.get("/", (req, res) => {
   Comment.findAll()
     .then((dbCommentData) => res.json(dbCommentData))
     .catch((err) => {
@@ -21,7 +21,8 @@ router.post("/", (req, res) => {
     Comment.create({
       comment_text: req.body.comment_text,
       client_id: req.body.client_id,
-      user_id: req.session.user_id
+      user_id: req.body.user_id
+      // user_id: req.session.user_id
     })
       .then((dbCommentData) => res.json(dbCommentData))
       .catch((err) => {
@@ -32,9 +33,10 @@ router.post("/", (req, res) => {
 });
 
 // - update
-router.put("/:id", withAuth, (req, res) => {
+router.put("/:id", (req, res) => {
   Comment.update(
     {
+      user_id: req.body.user_id,
       comment_text: req.body.comment_text,
     },
     {
@@ -55,7 +57,7 @@ router.put("/:id", withAuth, (req, res) => {
 });
 
 // - delete
-router.delete("/:id", withAuth, (req, res) => {
+router.delete("/:id", (req, res) => {
   Post.destroy({
     where: { id: req.params.id },
   })
