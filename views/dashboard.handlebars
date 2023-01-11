@@ -1,17 +1,16 @@
-<div>dashboard test</div>
-{{!-- controllers | dashboard | get route --}}
-{{!-- populates the dashboard view with client list --}}
-{{!-- {{#if clients.length}}
+{{#if clients.length}}
 <section>
-    <h2>Clients</h2>
+    <h2 class="header">Clients</h2>
     <ol>
         {{#each clients as |client|}}
-        <li>
+        <li class="client-list-item">
             {{> client-info client}}
-            <a href="/dashboard/edit/{{client.id}}" class="edit-link">Edit</a>
-            <button type="button" class="btn" id="delete-btn">Delete</button>
+            <article class="btn-wrapper">
+                <a href="/dashboard/edit/{{client.id}}" class="edit-link btn">Edit</a>
+                {{!-- <button type="button" class="btn" id="delete-btn">Delete</button> --}}
+            </article>
         </li>
         {{/each}}
     </ol>
 </section>
-{{/if}} --}}
+{{/if}}

@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     font-weight: 100;
-    /* border: 1px dotted blue; */
+    outline: 1px dotted blue;
 }
 
 :root {
@@ -63,17 +63,12 @@ header {
     display: flex;
 }
 
-#logo {
-    height: 15vw;
-    background: url('../images/LOGO.svg');
-}
 
 footer {
     /* margin-top: auto; */
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 2rem var(--dark-overlay);
 }
 
 main {
@@ -203,10 +198,47 @@ input[type=radio] {
     background-color: var(--accent);
 }
 
+/* partials | client-info */
+.client-list-item {
+    border-radius: .25rem;
+    border: var(--border);
+    margin: 1rem 0;
+    padding: .25rem;
+}
+
+.btn-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1rem;
+}
+
+.client-header {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.client-details {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: .25rem .5rem;
+}
+
+.client-text {
+    grid-column: span 2;
+}
+
+.details {
+    font-variant: normal;
+}
+/* list styles */
+ol {
+    list-style: none;
+}
 
 /* typography */
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: var(--form-text);
 }
 
 .header {
@@ -234,3 +266,4 @@ a:hover {
 p {
     padding-left: .5rem;
 }
+
