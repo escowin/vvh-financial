@@ -1,5 +1,7 @@
+<script defer src="/assets/js/cta-form.js"></script>
+
 <form id="cta-form" class="form">
-    <h2>Set up your consultation</h2>
+    <h2 class="header">Secure your future</h2>
     <article>
         <label for="first-name">first name</label>
         <input type="text" name="first-name" id="first-name">
@@ -20,17 +22,24 @@
         <input type="tel" name="phone" id="phone">
     </article>
 
-    <article>
-        <legend>contact by:</legend>
-        <div>
-            <input type="radio" name="contact" id="contact-email" value="email">
-            <label for="contact-email">email</label>
-        </div>
+    <article class="wrapper" id="contact-wrapper">
+        <legend class="header">contact</legend>
+        <section class="wrapper" id="radio-wrapper">
+            <div class="wrapper">
+                <input type="radio" name="contact"  id="contact-email" value="email">
+                <label for="contact-email">email</label>
+            </div>
 
-        <div>
-            <input type="radio" name="contact" id="contact-phone" value="phone">
-            <label for="contact-phone">phone</label>
-        </div>
+            <div class="wrapper">
+                <input type="radio" name="contact" id="contact-call" value="call">
+                <label for="contact-phone">call</label>
+            </div>
+
+            <div class="wrapper">
+                <input type="radio" name="contact" id="contact-text" value="text">
+                <label for="contact-text">text</label>
+            </div>
+        </section>
     </article>
 
     <article>
@@ -38,5 +47,5 @@
         <textarea id="client-text" placeholder="text area"></textarea>
     </article>
 
-    <button type="submit" id="cta-btn" class="btn">Request an appointment</button>
+    <button type="submit" id="cta-btn" class="btn">Request appointment</button>
 </form>

@@ -5,18 +5,20 @@
     margin: 0;
     padding: 0;
     font-weight: 100;
-    border: 1px dotted blue;
+    /* border: 1px dotted blue; */
 }
 
 :root {
     --text: rgb(252, 247, 231);
+    --form-text: rgba(252, 247, 231, .75);
     --hover: rgb(101, 155, 189);
     --dark-overlay: rgba(0, 0, 0, .90);
-    --light-overlay: rgba(252, 247, 226, 0.606);
+    --accent: rgba(252, 247, 226, 0.606);
     --button: rgba(0, 0, 0, 0.247);
     --cta: rgba(0, 0, 0, 0.064);
     --background: rgba(40, 36, 67, 0.85);
     --dev: rgb(151, 18, 18);
+    --border: 1px solid var(--accent)
 }
 
 body {
@@ -55,6 +57,10 @@ header {
     flex-direction: column;
     align-items: center;
     box-shadow: 0 0 2rem var(--dark-overlay);
+}
+
+.wrapper {
+    display: flex;
 }
 
 #logo {
@@ -108,104 +114,95 @@ ul {
     margin: 1.5rem 0 0 0;
 }
 
-/* CTA */
-#cta .header {
-    text-align: center;
+/* forms */
+form {
+    border-radius: 1rem;
+    border: 1px solid var(--accent)
 }
 
 input {
     padding-left: 1rem;
 }
 
+input, textarea {
+    width: 100%;
+}
+
+/* CTA */
 #cta-form {
     margin: .5rem 0 1rem 0;
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    border-radius: 1rem;
-    gap: 1rem .5rem;
+    gap: .5rem 0;
     align-items: center;
     background-color: var(--cta);
     box-shadow: 0 0 .5rem var(--cta);
 }
 
-#cta .header,
-#phone-number,
-#email,
-#submit {
-    grid-column: span 2;
+#cta-form article {
+    width: 100%;
 }
 
-#cta-form input {
+#cta-form h2 {
+    padding: .5vw 5vw;
+    border-bottom: 1px solid var(--accent);
+}
+
+#cta-form input[type=text], input[type=email], input[type=tel], textarea {
     --accent: rgba(247, 226, 226, 0.111);
     border-radius: 0 .5rem;
-    margin-top: .15rem;
     padding: .5rem .25rem;
     background: transparent;
     border-color: transparent transparent var(--accent) transparent;
-    width: 100%;
-    color: var(--light-overlay);
-    box-shadow: transparent;
+    color: var(--form-text);
     font-variant: normal;
     letter-spacing: .25rem;
     transition: 1s;
 }
 
-#cta-form input:focus {
+#cta-form input:focus, textarea:focus {
     outline: none;
     background-color: var(--cta);
     box-shadow: 0 0 1rem var(--cta);
     color: var(--text);
 }
 
-#submit {
-    color: var(--light-overlay);
+#contact-wrapper {
+    align-items: center;
+}
+
+#contact-wrapper * {
+    align-items: center;
+}
+
+#radio-wrapper {
+    flex-grow: 1;
+    justify-content: space-around;
+}
+
+/* inputs */
+input[type=radio] {
+    margin: 0 2vw;
+}
+
+/* buttons */
+
+.btn {
+    color: var(--accent);
     border-radius: .5rem;
-    padding: .25rem;
+    padding: .5rem;
     background-color: var(--button);
     border: none;
     cursor: pointer;
     transition: 1s;
+    width: 100%;
 }
 
-#submit:hover {
-    background-color: var(--light-overlay);
+#btn:hover {
+    background-color: var(--accent);
 }
 
-/* main#services */
-#services {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-/* main#agents */
-#agents {
-    display: grid;
-    grid-template-columns: auto 1fr;
-}
-
-.agent {
-    width: fit-content;
-    border-bottom: 1px solid var(--light-overlay);
-}
-
-.position {
-    color: var(--light-overlay);
-}
-
-#profile {
-    --size: 25vw;
-    --box-shadow: 0 0 1rem var(--background);
-    width: var(--size);
-    height: var(--size);
-    background: url('../images/profile.jpg');
-    border-radius: 50%;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin: 0 1rem;
-    box-shadow: inset var(--box-shadow), var(--box-shadow);
-}
 
 /* typography */
 body {
@@ -213,11 +210,11 @@ body {
 }
 
 .header {
-    color: var(--light-overlay);
+    color: var(--accent);
 }
 
 label {
-    color: var(--light-overlay);
+    color: var(--accent);
 }
 
 body * {
@@ -236,138 +233,4 @@ a:hover {
 
 p {
     padding-left: .5rem;
-}
-
-@media screen and (min-width: 768px) {
-    .mobile-hide {
-        display: block;
-    }
-
-    header {
-        flex-direction: row;
-        align-items: baseline;
-    }
-
-    footer * {
-        font-size: 1rem;
-    }
-
-    #footer-menu {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 0;
-    }
-
-    #logo {
-        --size: 5vw;
-        max-height: var(--size);
-        padding: .25rem .25rem 0 .25rem;
-    }
-
-    #header-menu {
-        justify-content: space-around;
-        font-size: 1.5rem;
-    }
-
-    .header {
-        font-size: 1.75rem;
-    }
-
-    #cta .header {
-        text-align: start;
-    }
-
-    p {
-        font-size: 1.25rem;
-    }
-
-    #logo {
-        max-height: 10vw;
-    }
-
-    #profile {
-        --size: 15vw;
-        width: var(--size);
-    }
-
-    #submit {
-        font-size: 1.125rem;
-        width: 50%;
-        margin: 0 auto;
-    }
-}
-
-@media screen and (min-width: 1024px) {
-    body {
-        display: grid;
-        grid-template-areas:
-            "a b"
-            "c b";
-        grid-template-columns: auto 1fr;
-    }
-
-    header,
-    footer {
-        width: 15vw;
-    }
-
-    header {
-        flex-direction: column;
-        grid-area: a;
-        height: 100%;
-        padding: 0 .25rem auto .25rem;
-    }
-
-    #logo {
-        width: 100%;
-    }
-
-    main {
-        grid-area: b;
-        display: flex;
-        flex-direction: column;
-    }
-
-    footer {
-        justify-content: end;
-        flex-direction: column;
-        grid-area: c;
-        height: 100%;
-        padding: 0 .25rem;
-        background-color: var(--dark-overlay);
-    }
-
-    footer * {
-        font-size: .75rem;
-        text-align: left;
-    }
-
-    #footer-menu {
-        flex-direction: column;
-        line-height: 1rem;
-    }
-
-    #footer-menu li {
-        width: 100%;
-    }
-
-    #copyright {
-        text-align: inherit;
-    }
-
-    .pl {
-        padding-left: .5rem;
-    }
-
-    #header-menu {
-        font-size: 1.25rem;
-        flex-direction: column;
-        padding-left: 1rem;
-    }
-
-    #profile {
-        --size: 10vw;
-        width: var(--size);
-    }
 }
