@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
   // SELECT * FROM users;
   User.findAll({
     // reads user data aside from the password attribute
-    attributes: { exclude: ["password"] },
+    attributes: { exclude: ["password", "email"] },
   })
     .then((dbUserData) => res.json(dbUserData))
     .catch((err) => {
@@ -21,7 +21,7 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   // SELECT * FROM users WHERE id = ?;
   User.findOne({
-    attributes: { exclude: ["password"] },
+    attributes: { exclude: ["password", "email"] },
     where: { id: req.params.id },
     include: [
       {

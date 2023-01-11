@@ -3,9 +3,9 @@ const { Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // authguarded | crud operations accessible only to logged in user
-// restful api | comments | /api/comments/
+// restful api
 // - read
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   Comment.findAll()
     .then((dbCommentData) => res.json(dbCommentData))
     .catch((err) => {
@@ -14,8 +14,8 @@ router.get("/", (req, res) => {
     });
 });
 
-// - create | accessible only to session user
-router.post("/", (req, res) => {
+// - create
+router.post("/", withAuth, (req, res) => {
   // only logged in users can comment on posts as the user id is tied to the corresponding session user id
   if (req.session) {
     Comment.create({
@@ -33,7 +33,7 @@ router.post("/", (req, res) => {
 });
 
 // - update
-router.put("/:id", (req, res) => {
+router.put("/:id", withAuth, (req, res) => {
   Comment.update(
     {
       comment_text: req.body.comment_text,
@@ -56,7 +56,7 @@ router.put("/:id", (req, res) => {
 });
 
 // - delete
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
   Comment.destroy({
     where: { id: req.params.id },
   })

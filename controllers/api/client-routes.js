@@ -21,7 +21,7 @@ router.post("/", (req, res) => {
 });
 
 // - read
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   Client.findAll({
     // order: [["created_at", "DESC"]],
     include: [
