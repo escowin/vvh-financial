@@ -1,1 +1,77 @@
-<div>edit link works</div>
+<script defer src="/assets/js/edit-client.js"></script>
+<script defer src="/assets/js/delete-client.js"></script>
+<script defer src="/assets/js/comment.js"></script>
+
+<section>
+    <a href="/dashboard"> &larr; Dashboard</a>
+    <h2>Edit client</h2>
+</section>
+
+<form id="edit-client-form" class="form">
+    {{!-- name --}}
+    <article>
+        <label for="first-name">first name</label>
+        <input type="text" name="first-name" value="{{client.first_name}}">
+    </article>
+    
+    <article>
+        <label for="last-name">last name</label>
+        <input type="text" name="last-name" value="{{client.last_name}}">
+    </article>
+
+    {{!-- contact --}}
+    <article>
+        <label for="email">email</label>
+        <input type="email" name="email" value={{client.email}}>
+    </article>
+
+    <article>
+        <label for="phone">phone</label>
+        <input type="tel" name="phone" value={{client.phone}}>
+    </article>
+
+    <article class="wrapper" id="contact-wrapper">
+        <legend class="header">contact</legend>
+        <section class="wrapper" id="radio-wrapper">
+            <div class="wrapper">
+                <input type="radio" name="contact"  id="contact-email" value="email">
+                <label for="contact-email">email</label>
+            </div>
+
+            <div class="wrapper">
+                <input type="radio" name="contact" id="contact-call" value="call">
+                <label for="contact-phone">call</label>
+            </div>
+
+            <div class="wrapper">
+                <input type="radio" name="contact" id="contact-text" value="text">
+                <label for="contact-text">text</label>
+            </div>
+        </section>
+    </article>
+
+    {{!-- text --}}
+    <article>
+        <label>Concerns</label>
+        <input type="text" name="client-text" value={{client.client_text}}></input>
+    </article>
+
+    {{!-- buttons --}}
+    <article class="buttons-wrapper">
+        <button type="submit" class="btn form-btn add-btn" id="save-btn">Save</button>
+        <button type="button" class="btn form-btn" id="delete-btn">Delete</button>
+    </article>
+</form>
+
+{{!-- add a comment to client --}}
+<form id="comment-form">
+    <div>
+        <textarea name="comment-body"></textarea>
+    </div>
+    <div>
+        <button type="submit" class="btn add-btn">Add comment</button>
+    </div>
+</form>
+
+{{!-- renders partial --}}
+{{> comments post.comments }}

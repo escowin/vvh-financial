@@ -5,9 +5,8 @@
         {{#each clients as |client|}}
         <li class="client-list-item">
             {{> client-info client}}
-            <article class="btn-wrapper">
-                <a href="/dashboard/edit/{{client.id}}" class="edit-link btn">Edit</a>
-                {{!-- <button type="button" class="btn" id="delete-btn">Delete</button> --}}
+            <article class="wrapper">
+                <a href="/dashboard/edit/{{client.id}}" class="edit-link btn form-btn">Edit</a>
             </article>
         </li>
         {{/each}}
