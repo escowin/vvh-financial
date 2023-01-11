@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const { Comment, Client } = require("../../models");
-const withAuth = require('../../utils/auth');
+const { Comment } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 // authguarded | crud operations accessible only to logged in user
 // restful api | comments | /api/comments/
@@ -21,7 +21,7 @@ router.post("/", (req, res) => {
     Comment.create({
       comment_text: req.body.comment_text,
       client_id: req.body.client_id,
-      user_id: req.body.user_id
+      user_id: req.body.user_id,
       // user_id: req.session.user_id
     })
       .then((dbCommentData) => res.json(dbCommentData))
@@ -36,7 +36,6 @@ router.post("/", (req, res) => {
 router.put("/:id", (req, res) => {
   Comment.update(
     {
-      user_id: req.body.user_id,
       comment_text: req.body.comment_text,
     },
     {
@@ -58,7 +57,7 @@ router.put("/:id", (req, res) => {
 
 // - delete
 router.delete("/:id", (req, res) => {
-  Post.destroy({
+  Comment.destroy({
     where: { id: req.params.id },
   })
     .then((dbCommentData) => {
