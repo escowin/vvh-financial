@@ -5,7 +5,7 @@ const withAuth = require("../utils/auth");
 // get | dashboard | /dashboard/ | accessible only to session user
 router.get("/", withAuth, (req, res) => {
   Client.findAll({
-    where: { user_id: req.session.user_id },
+    // where: { user_id: req.session.user_id },
     attributes: [
       "id",
       "first_name",
@@ -14,7 +14,7 @@ router.get("/", withAuth, (req, res) => {
       "phone",
       "contact_method",
       "client_text",
-      "created_at",
+      // "created_at",
     ],
     include: [
       {
@@ -23,8 +23,8 @@ router.get("/", withAuth, (req, res) => {
           "id",
           "comment_text",
           "client_id",
-          "user_id",
-          "created_at",
+          // "user_id",
+          // "created_at",
         ],
         include: {
           model: User,

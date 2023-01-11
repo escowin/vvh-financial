@@ -116,14 +116,14 @@ router.post("/login", (req, res) => {
     },
   }).then((dbUserData) => {
     if (!dbUserData) {
-      res.status(400).json({ message: "user not found" });
+      res.status(400).json({ message: "invalid user or password" });
       return;
     }
 
     // verifies dbUserData's password by comparing the plain text with the object's stored hashed password.
     const validPassword = dbUserData.checkPassword(req.body.password);
     if (!validPassword) {
-      res.status(400).json({ message: "user not found" });
+      res.status(400).json({ message: "invalid user or password" });
       return;
     }
 

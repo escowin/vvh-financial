@@ -1,0 +1,22 @@
+{{#if loggedIn}}
+<script defer src="/javascript/comment.js"></script>
+{{/if}}
+
+{{!-- renders partial --}}
+{{> client-info client }}
+
+{{!-- only renders for logged in users due to the conditions set in the res.render('single-client') within home-routes --}}
+{{#if loggedIn}}
+<form id="comment-form">
+  <div>
+    <textarea name="comment-body"></textarea>
+  </div>
+
+  <div>
+    <button type="submit" class="btn add-btn">add comment</button>
+  </div>
+</form>
+{{/if}}
+
+{{!-- renders partial --}}
+{{> comments client.comments }}

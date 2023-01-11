@@ -1,0 +1,27 @@
+<article class="client">
+  <h2 class="title">
+    <a href="/client/{{id}}">{{first_name}} {{last_name}}</a>
+  </h2>
+
+  <div class="details">
+    <p class="email">
+      {{email}}
+      &#183;
+        {{phone}}
+      &#183;
+            {{contact_method}}
+      &#183;
+            {{client_text}}
+      &#183;
+      {{format_date created_at}}
+    </p>
+    <a href="/client/{{id}}">
+      {{comments.length}}
+      {{format_plural "comment" comments.length}}
+    </a>
+  </div>
+  
+  <div class="content">
+    <p>{{content}}</p>
+  </div>
+</article>

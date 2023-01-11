@@ -1,0 +1,15 @@
+<article id="comments">
+  <h3>Comments</h3>
+  {{#each this}}
+    <div class="comment">
+      <p class="author">
+        {{user.username}}
+        &#183;
+        {{format_date created_at}}
+      </p>
+      <p class="comment-text">
+        {{comment_text}}
+      </p>
+    </div>
+  {{/each}}
+</article>
