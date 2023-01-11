@@ -1,0 +1,42 @@
+<form id="cta-form" class="form">
+    <h2>Set up your consultation</h2>
+    <article>
+        <label for="first-name">first name</label>
+        <input type="text" name="first-name" id="first-name">
+    </article>
+    
+    <article>
+        <label for="last-name">last name</label>
+        <input type="text" name="last-name" id="last-name">
+    </article>
+
+    <article>
+        <label for="email">email</label>
+        <input type="email" name="email" id="email">
+    </article>
+
+    <article>
+        <label for="phone">phone</label>
+        <input type="tel" name="phone" id="phone">
+    </article>
+
+    <article>
+        <legend>contact by:</legend>
+        <div>
+            <input type="radio" name="contact" id="contact-email" value="email">
+            <label for="contact-email">email</label>
+        </div>
+
+        <div>
+            <input type="radio" name="contact" id="contact-phone" value="phone">
+            <label for="contact-phone">phone</label>
+        </div>
+    </article>
+
+    <article>
+        <label>What would you like to plan?</label>
+        <textarea id="client-text" placeholder="text area"></textarea>
+    </article>
+
+    <button type="submit" id="cta-btn" class="btn">Request an appointment</button>
+</form>

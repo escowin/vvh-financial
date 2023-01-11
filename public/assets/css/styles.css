@@ -4,8 +4,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-variant: small-caps;
     font-weight: 100;
+    border: 1px dotted blue;
 }
 
 :root {
@@ -28,6 +28,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-variant: small-caps;
 }
 
 .dev {
@@ -57,7 +58,8 @@ header {
 }
 
 #logo {
-    max-height: 15vw;
+    height: 15vw;
+    background: url('../images/LOGO.svg');
 }
 
 footer {
@@ -71,7 +73,8 @@ footer {
 main {
     display: flex;
     flex-direction: column;
-    padding: 0 5vw 2rem 0;
+    justify-content: center;
+    padding: 5vw;
     margin-bottom: auto;
 }
 
@@ -116,8 +119,8 @@ input {
 
 #cta-form {
     margin: .5rem 0 1rem 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     padding: 1rem;
     border-radius: 1rem;
     gap: 1rem .5rem;
