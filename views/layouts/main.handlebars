@@ -1,38 +1,40 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VVH Financial</title>
-  <link rel="stylesheet" href="/stylesheets/styles.css">
-  <script defer src="/javascript/copyright.js"></script>
-  {{#if loggedIn}}
-    <script defer src="/javascript/logout.js"></script>
-  {{/if}}
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VVH Financial</title>
+    <link rel="stylesheet" href="/stylesheets/styles.css" />
+    <script defer src="/javascript/copyright.js"></script>
+    {{#if loggedIn}}
+      <script defer src="/javascript/logout.js"></script>
+    {{/if}}
+  </head>
 
-<body>
+  <body>
     <header>
       <h1>
         <a href="/">VVH Financial</a>
       </h1>
       <nav class="wrapper">
         {{#if loggedIn}}
-          <a href="/dashboard">dashboard</a>
-          <button id="logout" class="btn">logout</button>
+          <a class="nav-links" href="/dashboard">dashboard</a>
+          <a class="nav-links" href="/dashboard/profile/:id">profile</a>
+          <button id="logout" class="btn nav-links">logout</button>
         {{else}}
-          <a href="/#">About</a>
-          <a href="/#">Contact</a>
+          <a class="nav-links" href="/#">About</a>
+          <a class="nav-links" href="/#">Contact</a>
         {{/if}}
       </nav>
     </header>
     <main>
-      {{{ body }}}
+      {{{body}}}
     </main>
     <footer>
-      &copy; <span id="copyright"></span> VVH Financial
+      &copy;
+      <span id="copyright"></span>
+      VVH Financial
     </footer>
-</body>
+  </body>
 
 </html>
