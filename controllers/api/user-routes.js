@@ -3,7 +3,7 @@ const { User, Client, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // get | users | /api/users
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   // SELECT * FROM users;
   User.findAll({
     // reads user data aside from the password attribute
@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 
 // restful api | specific user | /api/users/:id
 // - read
-router.get("/:id", (req, res) => {
+router.get("/:id", withAuth, (req, res) => {
   // SELECT * FROM users WHERE id = ?;
   User.findOne({
     attributes: { exclude: ["password", "email"] },
@@ -63,7 +63,7 @@ router.post("/", (req, res) => {
     });
 });
 
-// - update | accessible only to session user
+// - update | 
 router.put("/:id", withAuth, (req, res) => {
   // UPDATE users
   // SET username = '?', email='?', password='?'

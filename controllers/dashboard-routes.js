@@ -76,7 +76,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
           model: User,
           attributes: ["username"],
         },
-      }
+      },
     ],
   })
     .then((dbClientData) => {
@@ -98,5 +98,26 @@ router.get("/edit/:id", withAuth, (req, res) => {
     });
 });
 
+router.get("/profile/:id", withAuth, (req, res) => {
+  User.findOne({
+    attributes: { id: req.params.id },
+    attributes: ["id", "username", "email", "password"],
+  })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "user does not exist" });
+        return;
+      }
+      const user = dbUserData.get({ plain: true });
+      res.render("profile", {
+        user,
+        loggedIn: true,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;
