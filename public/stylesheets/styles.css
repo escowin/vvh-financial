@@ -17,7 +17,8 @@
     --button: rgba(0, 0, 0, 0.247);
     --cta: rgba(0, 0, 0, 0.064);
     --background: rgba(40, 36, 67, 0.85);
-    --border: 1px solid var(--accent)
+    --border: 1px solid var(--accent);
+    --section-corners: 1rem;
 }
 
 body {
@@ -97,10 +98,9 @@ form {
     flex-direction: column;
     padding: 1rem;
     gap: .5rem 0;
-    align-items: center;
     background-color: var(--cta);
     box-shadow: 0 0 .5rem var(--cta);
-    border-radius: 1rem;
+    border-radius: var(--section-corners);
     border: 1px solid var(--accent)
 }
 
@@ -161,9 +161,6 @@ form input:focus, textarea:focus {
     justify-content: space-around;
 }
 
-/* inputs */
-
-
 /* buttons */
 
 .btn {
@@ -194,6 +191,21 @@ form input:focus, textarea:focus {
     margin-left: 1rem;
 }
 
+/* profile.handlebars */
+#profile {
+    flex-direction: column;
+    border-radius: var(--section-corners);
+    border: var(--border);
+    padding: .5rem;
+}
+
+#profile article {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: .5rem;
+    padding-top: .5rem;
+}
+
 /* partials | client-info */
 .client-list-item {
     border-radius: .25rem 0 0 0;
@@ -214,7 +226,7 @@ form input:focus, textarea:focus {
     align-items: center;
 }
 
-.client-details {
+.details-wrapper {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: .25rem .5rem;
@@ -227,9 +239,14 @@ form input:focus, textarea:focus {
 .details {
     font-variant: normal;
 }
+
 /* list styles */
 ol {
     list-style: none;
+}
+/* section styles */
+.section {
+    margin-bottom: 2rem;
 }
 
 /* typography */

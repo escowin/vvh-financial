@@ -1,1 +1,33 @@
-<p>view test</p>
+<script defer src="/javascript/edit-user.js"></script>
+
+<section id="profile" class="section wrapper">
+    <h2 class="header">Profile</h2>
+
+    <article>
+        <p>username</p>
+        <p class="details">{{user.username}}</p>
+        <p>email</p>
+        <p class="details">{{user.email}}</p>
+    </article>
+</section>
+
+<form id="edit-user-form">
+    <h2 class="header">Edit details</h2>
+
+    <article>
+        <label for="edit-username">username</label>
+        <input id="edit-username" name="username" value="{{user.username}}">
+    </article>
+
+    <article>
+        <label for="edit-email">email</label>
+        <input id="edit-email" name="email" value="{{user.email}}">
+    </article>
+
+    <article>
+        <label for="edit-password">password</label>
+        <input id="edit-password" type="password" name="password">
+    </article>
+
+    <button type="submit" class="btn form-btn">Update</button>
+</form>
