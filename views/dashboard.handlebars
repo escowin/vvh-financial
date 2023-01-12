@@ -1,15 +1,15 @@
 {{#if clients.length}}
-<section>
-    <h2 class="header">Clients</h2>
-    <ol>
-        {{#each clients as |client|}}
-        <li class="client-list-item">
-            {{> client-info client}}
-            <article class="wrapper">
-                <a href="/dashboard/edit/{{client.id}}" class="edit-link btn form-btn">Edit</a>
-            </article>
-        </li>
-        {{/each}}
+{{!-- <section> --}}
+<h2 class="header" id="clients-header">Client list</h2>
+<ol>
+    {{#each clients as |client|}}
+    <li class="client-list-item">
+        {{> client-info client}}
+        <article class="wrapper">
+            <a href="/dashboard/edit/{{client.id}}" class="edit-link btn form-btn">Edit</a>
+        </article>
+    </li>
+    {{/each}}
     </ol>
-</section>
+{{!-- </section> --}}
 {{/if}}

@@ -1,7 +1,14 @@
 <script defer src="/javascript/cta-form.js"></script>
 
 <form id="cta-form" class="form">
-    <h2 class="header">Secure your future</h2>
+    <h2 class="header">
+        {{#if loggedIn}}
+        Add client
+        {{else}}
+        Secure your future
+        {{/if}}
+    </h2>
+
     <article>
         <label for="first-name">first name</label>
         <input type="text" name="first-name" id="first-name">
@@ -47,5 +54,11 @@
         <textarea id="client-text" placeholder="text area"></textarea>
     </article>
 
-    <button type="submit" id="cta-btn" class="btn">Request appointment</button>
+    <button type="submit" id="cta-btn" class="btn">
+        {{#if loggedIn}}
+        Save client
+        {{else}}
+        Request appointment
+        {{/if}}
+    </button>
 </form>
