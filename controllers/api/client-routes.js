@@ -23,7 +23,8 @@ router.post("/", (req, res) => {
 // - read
 router.get("/", withAuth, (req, res) => {
   Client.findAll({
-    // order: [["created_at", "DESC"]],
+    // attributes: ["id", "first_name", "last_name", "created_at"],
+    order: [["created_at", "DESC"]],
     include: [
       {
         model: Comment,
@@ -68,7 +69,7 @@ router.get("/:id", withAuth, (req, res) => {
           "comment_text",
           "client_id",
           "user_id",
-          "updated_at",
+          "created_at"
         ],
         // including the user model allows the username to be attached to the comment
         include: {

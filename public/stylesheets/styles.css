@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     font-weight: 100;
-    /* outline: 1px dotted blue; */
+    outline: 1px dotted blue;
 }
 
 :root {
@@ -112,11 +112,18 @@ input {
     padding-left: 1rem;
 }
 
+input[type=radio] {
+    margin: 0 2vw;
+}
+
 input, textarea {
     width: 100%;
 }
 
-input[type=text], input[type=email], input[type=tel], textarea {
+#client-text {
+    line-height: 4rem;
+}
+input, textarea {
     --accent: rgba(247, 226, 226, 0.111);
     border-radius: 0 .5rem;
     padding: .5rem .25rem;
@@ -155,9 +162,7 @@ form input:focus, textarea:focus {
 }
 
 /* inputs */
-input[type=radio] {
-    margin: 0 2vw;
-}
+
 
 /* buttons */
 

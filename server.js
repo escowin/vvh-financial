@@ -40,7 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 // turn on database and server connection
-// - force: true | DROP DATABASE IF EXISTS tech_blog_db;
+// - force: true | drops exisiting vvh_financial_db
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
 });

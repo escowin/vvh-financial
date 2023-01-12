@@ -51,12 +51,12 @@
 
     <article>
         <label>What would you like to plan?</label>
-        <textarea id="client-text" placeholder="text area"></textarea>
+        <input type="text" name="client-text" id="client-text" placeholder="text area"></input>
     </article>
 
-    <button type="submit" id="cta-btn" class="btn">
+    <button type="submit" id="cta-btn" class="form-btn btn">
         {{#if loggedIn}}
-        Save client
+        Save
         {{else}}
         Request appointment
         {{/if}}
