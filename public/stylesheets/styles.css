@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     font-weight: 100;
-    /* outline: 1px dotted blue; */
+    outline: 1px dotted blue;
 }
 
 :root {
@@ -262,6 +262,11 @@ form input:focus, textarea:focus {
     border-left: var(--border);
 }
 
+.author {
+    text-align: end;
+    padding-right: .5rem;
+}
+
 /* list styles */
 ol {
     list-style: none;
@@ -341,6 +346,9 @@ p {
 
 @media screen and (min-width: 1024px) {
     /* display */
+    .clients-wrapper {
+        width: 100%;
+    }
     #cta-form, #login-form {
         width: 35vw;
     }

@@ -2,7 +2,7 @@
 const router = require("express").Router();
 // const sequelize = require("../config/connection");
 const { Client, User, Comment } = require("../models");
-const withAuth = require('../utils/auth');
+const withAuth = require("../utils/auth");
 
 // rendering views
 // - homepage template
@@ -13,13 +13,13 @@ router.get("/", (req, res) => {
 });
 
 // - about template
-router.get('/about', (req, res) => {
-  res.render('about');
+router.get("/about", (req, res) => {
+  res.render("about");
 });
 
 // - contact template
-router.get('/contact', (req, res) => {
-  res.render('contact');
+router.get("/contact", (req, res) => {
+  res.render("contact");
 });
 
 // - login template
@@ -33,40 +33,48 @@ router.get("/login", (req, res) => {
 });
 
 // - single client template
-router.get('/client/:id', withAuth, (req, res) => {
+router.get("/client/:id", withAuth, (req, res) => {
   Client.findOne({
     where: { id: req.params.id },
-    attributes: ["id", "first_name", "last_name", "email", "phone", "client_text"],
+    attributes: [
+      "id",
+      "first_name",
+      "last_name",
+      "email",
+      "phone",
+      "contact_method",
+      "client_text",
+    ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'client_id'],
+        attributes: ["id", "comment_text", "client_id", "created_at"],
         include: {
           model: User,
-          attributes: ['username'],
-        }
+          attributes: ["username"],
+        },
+      },
+    ],
+  })
+    .then((dbClientData) => {
+      if (!dbClientData) {
+        res.status(404).json({ message: "client does not exist" });
+        return;
       }
-    ]
-  })
-  .then(dbClientData => {
-    if (!dbClientData) {
-      res.status(404).json({ message: 'client does not exist' });
-      return;
-    }
 
-    // serializes data
-    const client = dbClientData.get({ plain: true });
+      // serializes data
+      const client = dbClientData.get({ plain: true });
 
-    // passes data into template. can only be viewed as a logged in user
-    res.render('single-client', {
-      client,
-      loggedIn: req.session.loggedIn
+      // passes data into template. can only be viewed as a logged in user
+      res.render("single-client", {
+        client,
+        loggedIn: req.session.loggedIn,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
     });
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  })
-})
+});
 
 module.exports = router;

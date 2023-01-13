@@ -1,3 +1,13 @@
+function captureRadioValue() {
+  let radio = document.getElementsByName("contact");
+
+  for (i = 0; i < radio.length; i++) {
+    if (radio[i].checked) {
+      return radio[i].value;
+    }
+  }
+}
+
 async function editClientFormHandler(e) {
   e.preventDefault();
 
@@ -10,11 +20,7 @@ async function editClientFormHandler(e) {
     .value.trim();
   const email = document.querySelector('input[name="email"]').value.trim();
   const phone = document.querySelector('input[name="phone"]').value.trim();
-  const contact = document.querySelector('input[name="contact"]').value.trim();
-  const clientText = document
-    .querySelector('input[name="client-text"]')
-    .value.trim();
-
+  const contact = captureRadioValue();
   const id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
@@ -27,7 +33,6 @@ async function editClientFormHandler(e) {
       email,
       phone,
       contact,
-      clientText,
     }),
     headers: { "Content-Type": "application/json" },
   });

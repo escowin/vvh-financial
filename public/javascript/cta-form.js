@@ -1,3 +1,13 @@
+function captureRadioValue() {
+  let radio = document.getElementsByName("contact");
+
+  for (i = 0; i < radio.length; i++) {
+    if (radio[i].checked) {
+      return radio[i].value;
+    }
+  }
+}
+
 async function ctaFormHandler(e) {
   e.preventDefault();
 
@@ -5,9 +15,10 @@ async function ctaFormHandler(e) {
   const lastName = document.getElementById("last-name").value.trim();
   const email = document.getElementById("email").value.trim();
   const phone = document.getElementById("phone").value.trim();
-  const contact = document.querySelector('input[name="contact"]').value.trim();
+  const contact = captureRadioValue();
   const clientText = document.getElementById("client-text").value.trim();
 
+  console.log(contact);
   // completed form will post to database
   if (firstName && lastName && email && phone && contact && clientText) {
   }

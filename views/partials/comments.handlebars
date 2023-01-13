@@ -2,12 +2,12 @@
   <h3>Comments</h3>
   {{#each this}}
     <div class="comment">
-      <p class="author">
-        {{user.username}}
-      </p>
-      <p class="comment-text">
-        {{comment_text}}
-      </p>
+      <p class="comment-date">{{format_date created_at}}</p>
+
+      <div class="comment-text">
+        <p>{{comment_text}}</p>
+        <p class="author">&mdash;{{user.username}}</p>
+      </div>
     </div>
   {{/each}}
 </article>
