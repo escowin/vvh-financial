@@ -98,7 +98,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
     });
 });
 
-router.get("/profile/:id", withAuth, (req, res) => {
+router.get("/profile", withAuth, (req, res) => {
   User.findOne({
     attributes: { id: req.params.id },
     attributes: ["id", "username", "email", "password"],
