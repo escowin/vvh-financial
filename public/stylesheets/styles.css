@@ -75,6 +75,20 @@ nav {
     display: flex;
 }
 
+.contact-links {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: .25rem;
+}
+
+#about-details {
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr;
+    gap: .25rem;
+    margin-bottom: 1rem;
+}
+
 /* display */
 header,
 footer {
@@ -268,6 +282,12 @@ ol {
 
 #logo:hover {
     filter: opacity(.75) drop-shadow(0 0 0 var(--accent) invert);
+}
+
+#profile-pic {
+    margin: .25rem;
+    border-radius: 50%;
+    height: 30vw;
 }
 
 /* typography */

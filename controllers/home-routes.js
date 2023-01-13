@@ -12,6 +12,16 @@ router.get("/", (req, res) => {
   });
 });
 
+// - about template
+router.get('/about', (req, res) => {
+  res.render('about');
+});
+
+// - contact template
+router.get('/contact', (req, res) => {
+  res.render('contact');
+});
+
 // - login template
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
