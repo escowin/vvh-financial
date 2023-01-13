@@ -63,7 +63,7 @@ router.post("/", (req, res) => {
     });
 });
 
-// - update | 
+// - update | accessible only to session user
 router.put("/:id", withAuth, (req, res) => {
   // UPDATE users
   // SET username = '?', email='?', password='?'
