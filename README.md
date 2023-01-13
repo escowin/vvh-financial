@@ -7,13 +7,12 @@
   
 ## Description
 
-  Fullstack app built on ORM & MVC principles.
+  Fullstack MVC application made for VVH Financial.
   
-  ES6 Javascript, Node, CSS, and SQL serves as the foundation of the app.
+  I used bcrypt to hash passwords, session middleware to handle employee logins, and I also authguarded crud operations to secure sensitive data. Database protection was done by using Sequelize to perform ORM queries to the mysql database. 
 
-  To protect the SQL database, Sequelize, 
+  Views were made possible with the Handlebars template engine. Within Handlebars, partials were used to modularize repeating code. Inserted custom helpers to format dates and word pluralization.
 
-  Encryption and authentication was done 
 
 ## Table of Contents
 
@@ -37,7 +36,7 @@
 
 ## Screenshots
 
-  For the sole use of VVH Financial.
+  For the sole professional use of VVH Financial.
 
 
 ## Usage
