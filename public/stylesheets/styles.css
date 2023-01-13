@@ -322,3 +322,61 @@ p {
     padding-left: .5rem;
 }
 
+/* tablet view */
+@media screen and (min-width: 768px) {
+    /* img */
+    #logo {
+        width: 20vw;
+    }
+
+    #profile-pic {
+        height: 20vw;
+    }
+
+    /* typography */
+    .nav-links {
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    /* flow */
+    .forms-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .buttons-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    #edit-client-form {
+        gap: 0;
+    }
+
+    .textarea-wrapper {
+        flex-grow: 1;
+    }
+
+    .textarea-wrapper textarea {
+        height: 100%;
+    }
+
+    .edit-link {
+        width: fit-content;
+        padding: .25rem 1rem;
+    }
+
+    /* img */
+    #logo {
+        width: 10vw;
+    }
+
+    /* typography */
+    #cta-form h2 {
+        padding: 0.5vw 2vw;
+    }
+}

@@ -1,0 +1,2 @@
+-- INSERT INTO user (username, email, password)
+-- VALUES (user, user@test.com, qwerty);
