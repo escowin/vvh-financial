@@ -343,7 +343,7 @@ body * {
     font-style: italic;
 }
 
-.comment-date {
+.comment-date, .client-date {
     font-size: .75rem;
 }
 

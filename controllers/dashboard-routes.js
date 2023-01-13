@@ -16,24 +16,8 @@ router.get("/", withAuth, (req, res) => {
       "phone",
       "contact_method",
       "client_text",
-      // "created_at",
     ],
-    include: [
-      {
-        model: Comment,
-        attributes: [
-          "id",
-          "comment_text",
-          "client_id",
-          // "user_id",
-          // "created_at",
-        ],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
-      },
-    ],
+    order: [["last_name", "ASC"]],
   })
     .then((dbClientData) => {
       // serializes data before passing to template

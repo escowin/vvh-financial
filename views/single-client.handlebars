@@ -2,6 +2,11 @@
 
 {{!-- renders partial --}}
 <section id="client-section">
+  <h2 class="header">
+    Client
+    <span class="client-date">{{format_date client.created_at}}</span>
+  </h2>
+
   {{> client-info client }}
 
   <form id="comment-form">

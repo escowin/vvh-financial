@@ -7,7 +7,7 @@
   
 ## Description
 
-  Fullstack MVC application made for VVH Financial.
+  MVC application made for VVH Financial.
   
   I used bcrypt to hash passwords, session middleware to handle employee logins, and I also authguarded crud operations to secure sensitive data. Database protection was done by using Sequelize to perform ORM queries to the mysql database. 
 
@@ -36,11 +36,11 @@
 
 ## Screenshots
 
-  ![mobile](./images/display-small.jpg)
+  ![desktop](./images/display-large.jpg)
 
   ![tablet](./images/display-medium.jpg)
 
-  ![desktop](./images/display-large.jpg)
+  ![mobile](./images/display-small.jpg)
 
 
 ## Usage

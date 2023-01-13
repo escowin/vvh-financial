@@ -44,6 +44,7 @@ router.get("/client/:id", withAuth, (req, res) => {
       "phone",
       "contact_method",
       "client_text",
+      "created_at"
     ],
     include: [
       {
