@@ -36,12 +36,16 @@
 
 ## Screenshots
 
-  For the sole professional use of VVH Financial.
+  ![mobile](./images/display-small.jpg)
+
+  ![tablet](./images/display-medium.jpg)
+
+  ![desktop](./images/display-large.jpg)
 
 
 ## Usage
 
-  For the sole use of VVH Financial.
+  For the sole professional use of VVH Financial.
 
 
 ## Test
