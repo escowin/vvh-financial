@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     font-weight: 100;
-    outline: 1px dotted blue;
+    /* outline: 1px dotted blue; */
 }
 
 :root {
@@ -18,7 +18,9 @@
     --cta: rgba(0, 0, 0, 0.064);
     --background: rgba(40, 36, 67, 0.85);
     --border: 1px solid var(--accent);
+    --hover-link: rgb(196, 128, 105);
     --section-corners: 1rem;
+    --time: 1s;
 }
 
 body {
@@ -49,7 +51,6 @@ header {
     box-shadow: 0 0 2rem var(--dark-overlay);
 }
 
-
 footer {
     display: flex;
     justify-content: center;
@@ -74,21 +75,18 @@ nav {
     display: flex;
 }
 
-
 /* display */
 header,
 footer {
     background: var(--dark-overlay);
 }
 
-
 ul {
     list-style: none;
 }
 
 #copyright {
-    grid-column: span 3;
-    text-align: center;
+    padding-right: .5rem;
 }
 
 /* forms */
@@ -120,9 +118,6 @@ input, textarea {
     width: 100%;
 }
 
-#client-text {
-    line-height: 4rem;
-}
 input, textarea {
     --accent: rgba(247, 226, 226, 0.111);
     border-radius: 0 .5rem;
@@ -132,7 +127,7 @@ input, textarea {
     color: var(--form-text);
     font-variant: normal;
     letter-spacing: .25rem;
-    transition: 1s;
+    transition: var(--time);
 }
 
 form input:focus, textarea:focus {
@@ -161,8 +156,11 @@ form input:focus, textarea:focus {
     justify-content: space-around;
 }
 
-/* buttons */
+.add-client-text {
+    height: 6rem;
+}
 
+/* buttons */
 .btn {
     color: var(--accent);
     border-radius: .5rem;
@@ -170,8 +168,9 @@ form input:focus, textarea:focus {
     background-color: var(--button);
     border: none;
     cursor: pointer;
-    transition: 1s;
+    transition: var(--time);
     text-align: center;
+    font-variant: small-caps;
 }
 
 .form-btn {
@@ -179,7 +178,15 @@ form input:focus, textarea:focus {
 }
 
 .btn:hover {
-    background-color: var(--accent);
+    background-color: var(--hover);
+}
+
+.edit-link {
+    margin-top: .25rem;
+}
+
+.buttons-wrapper * {
+    margin-top: .25rem;
 }
 
 /* dashboard */
@@ -208,11 +215,9 @@ form input:focus, textarea:focus {
 
 /* partials | client-info */
 .client-list-item {
-    border-radius: .25rem 0 0 0;
     border-left: var(--border);
-    border-top: var(--border);
     margin: 1rem 0;
-    padding: .25rem;
+    padding: .25rem 0 .25rem .5rem;
 }
 
 .btn-wrapper {
@@ -232,21 +237,37 @@ form input:focus, textarea:focus {
     gap: .25rem .5rem;
 }
 
-.client-text {
-    grid-column: span 2;
-}
-
 .details {
     font-variant: normal;
+}
+
+/* partials | comments */
+.comment {
+    display: flex;
+    gap: .5rem;
+    border-left: var(--border);
 }
 
 /* list styles */
 ol {
     list-style: none;
 }
+
 /* section styles */
 .section {
     margin-bottom: 2rem;
+}
+
+/* img styles */
+#logo {
+    width: 25vw;
+    margin: .125rem 0;
+    filter: opacity(.5) drop-shadow(0 0 0 var(--accent));
+    transition: var(--time);
+}
+
+#logo:hover {
+    filter: opacity(.75) drop-shadow(0 0 0 var(--accent) invert);
 }
 
 /* typography */
@@ -255,7 +276,7 @@ body {
     color: var(--form-text);
 }
 
-.header {
+.header, .details {
     color: var(--accent);
 }
 
@@ -270,11 +291,11 @@ body * {
 a {
     color: inherit;
     text-decoration: none;
-    transition: 1s;
+    transition: var(--time);
 }
 
 a:hover {
-    color: var(--hover);
+    color: var(--hover-link);
 }
 
 p {
