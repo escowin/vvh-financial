@@ -1,18 +1,18 @@
 <script defer src="/javascript/comment.js"></script>
 
 {{!-- renders partial --}}
-{{> client-info client }}
+<section id="client-section">
+  {{> client-info client }}
 
+  <form id="comment-form">
+    <article>
+      <textarea name="comment-body"></textarea>
+    </article>
+
+    <button type="submit" class="btn add-btn">add note</button>
+  </form>
+</section>
 {{!-- add a comment --}}
-<form id="comment-form">
-  <article>
-    <textarea name="comment-body"></textarea>
-  </article>
-
-  <article>
-    <button type="submit" class="btn add-btn">add comment</button>
-  </article>
-</form>
 
 {{!-- renders partial --}}
 {{> comments client.comments }}

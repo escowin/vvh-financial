@@ -5,7 +5,6 @@
     margin: 0;
     padding: 0;
     font-weight: 100;
-    outline: 1px dotted blue;
 }
 
 :root {
@@ -128,11 +127,13 @@ input[type=radio] {
     margin: 0 2vw;
 }
 
-input, textarea {
+input,
+textarea {
     width: 100%;
 }
 
-input, textarea {
+input,
+textarea {
     --accent: rgba(247, 226, 226, 0.111);
     border-radius: 0 .5rem;
     padding: .5rem .25rem;
@@ -144,17 +145,25 @@ input, textarea {
     transition: var(--time);
 }
 
-form input:focus, textarea:focus {
+form input:focus,
+textarea:focus {
     outline: none;
     background-color: var(--cta);
     box-shadow: 0 0 1rem var(--cta);
     color: var(--text);
 }
 
+#comment-form {
+    border-radius: 0;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    padding: .5rem;
+}
+
 /* CTA */
 #cta-form h2 {
-    padding: .5vw 5vw;
-    border-bottom: 1px solid var(--accent);
+    padding: .5vw;
 }
 
 #contact-wrapper {
@@ -227,6 +236,12 @@ form input:focus, textarea:focus {
     padding-top: .5rem;
 }
 
+/* single-client */
+#client-section .client {
+    border-left: var(--border);
+    padding: .5rem;
+}
+
 /* partials | client-info */
 .client-list-item {
     border-left: var(--border);
@@ -256,15 +271,19 @@ form input:focus, textarea:focus {
 }
 
 /* partials | comments */
+#comments {
+    border-left: var(--border);
+    padding: .5rem;
+}
+
 .comment {
     display: flex;
     gap: .5rem;
-    border-left: var(--border);
 }
 
-.author {
-    text-align: end;
-    padding-right: .5rem;
+.comment-details {
+    display: flex;
+    flex-direction: column;
 }
 
 /* list styles */
@@ -296,23 +315,6 @@ ol {
 }
 
 /* typography */
-body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: var(--form-text);
-}
-
-.header, .details {
-    color: var(--accent);
-}
-
-label {
-    color: var(--accent);
-}
-
-body * {
-    letter-spacing: .15rem;
-}
-
 a {
     color: inherit;
     text-decoration: none;
@@ -323,12 +325,48 @@ a:hover {
     color: var(--hover-link);
 }
 
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: var(--form-text);
+}
+
+body * {
+    letter-spacing: .15rem;
+}
+
+.client-email {
+    letter-spacing: .075rem;
+}
+
+.comment-author {
+    color: var(--accent);
+    font-style: italic;
+}
+
+.comment-date {
+    font-size: .75rem;
+}
+
+.comment-text {
+    font-variant: normal;
+}
+
+.header,
+.details {
+    color: var(--accent);
+}
+
+label {
+    color: var(--accent);
+}
+
 p {
     padding-left: .5rem;
 }
 
 /* tablet view */
 @media screen and (min-width: 768px) {
+
     /* img */
     #logo {
         width: 20vw;
@@ -345,11 +383,20 @@ p {
 }
 
 @media screen and (min-width: 1024px) {
+
     /* display */
+    #client-section,
+    #comments,
+    #edit-client-form {
+        width: 40vw;
+    }
+
     .clients-wrapper {
         width: 100%;
     }
-    #cta-form, #login-form {
+
+    #cta-form,
+    #login-form {
         width: 35vw;
     }
 
@@ -358,9 +405,27 @@ p {
     }
 
     /* flow */
+    .about-section {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 2rem;
+    }
+
+    #about-details {
+        display: flex;
+        flex-direction: column;
+    }
+
     main {
         align-items: center;
     }
+
+    .client-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: .5rem 1rem;
+    }
+
     .forms-wrapper {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -387,7 +452,7 @@ p {
 
     .edit-link {
         width: fit-content;
-        padding: .25rem 1rem;
+        padding: .125rem 1rem;
     }
 
     /* img */
@@ -395,8 +460,7 @@ p {
         width: 10vw;
     }
 
-    /* typography */
-    #cta-form h2 {
-        padding: 0.5vw 2vw;
+    #profile-pic {
+        height: 10vw;
     }
 }

@@ -1,13 +1,14 @@
-<article id="comments">
-  <h3>Comments</h3>
+<section id="comments">
+  <h3>{{format_plural "Note" length}}</h3>
   {{#each this}}
-    <div class="comment">
-      <p class="comment-date">{{format_date created_at}}</p>
-
+    <article class="comment">
+      <div class="comment-details">
+        <p class="comment-author">{{user.username}}</p>
+        <p class="comment-date">{{format_date created_at}}</p>
+      </div>
       <div class="comment-text">
         <p>{{comment_text}}</p>
-        <p class="author">&mdash;{{user.username}}</p>
       </div>
-    </div>
+    </article>
   {{/each}}
-</article>
+</section>

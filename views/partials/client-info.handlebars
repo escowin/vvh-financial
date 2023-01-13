@@ -8,7 +8,7 @@
     <p>
       <a href="/client/{{id}}">
         {{comments.length}}
-        {{format_plural "comment" comments.length}}
+        {{format_plural "note" comments.length}}
       </a>
     </p>
   </div>
@@ -21,13 +21,13 @@
 
     <p>email</p>
     <p class="details">
-      <a href="mailto:{{email}}">{{email}}</a>
+      <a href="mailto:{{email}}" class="client-email">{{email}}</a>
     </p>
     
     <p>contact</p>
     <p class="details">{{contact_method}}</p>
 
-    <p>note</p>
+    <p>concern</p>
     <p class="details">{{client_text}}</p>
   </div>
 </article>

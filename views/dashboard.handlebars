@@ -1,7 +1,7 @@
 {{#if clients.length}}
 <section class="clients-wrapper">
     <h2 class="header" id="clients-header">Client list</h2>
-    <ol>
+    <ol class="client-list">
     {{#each clients as |client|}}
         <li class="client-list-item">
             {{> client-info-min client}}
